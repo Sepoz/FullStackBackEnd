@@ -18,6 +18,10 @@ app.get("/api/persons", (req, res) => {
     res.json(persons);
 });
 
+app.get("/info", (req, res) => {
+    res.send(`<h3>Phonebook has info for ${persons.length} people</h3> <h3>${new Date().toUTCString()}</h3>`)
+})
+
 const PORT = 3001;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
