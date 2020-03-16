@@ -1,7 +1,9 @@
 const express = require("express");
+const morgan = require("morgan");
 const app = express();
 
 app.use(express.json());
+app.use(morgan("tiny"));
 
 let persons = [
     {
@@ -47,7 +49,7 @@ app.post("/api/persons", (req, res) => {
     const body = req.body;
 
     const filter = persons.filter(person => person.name === body.name);
-    
+
     if (!body.name || !body.number) {
         return res.status(400).json({
             error: "content missing"
